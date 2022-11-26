@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="Hungrezy">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="user" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="firstname" type="xs:string" />
+                            <xs:element name="lastname" type="xs:string" />
+                            <xs:element name="age" type="xs:string" />
+                            <xs:element name="gender" type="xs:string" />
+                            <xs:element name="mobile" type="xs:string" />
+                            <xs:element name="email" type="xs:string" />
+                            <xs:element name="password" type="xs:string" />
+                        </xs:sequence>
+                        <xs:attribute name="id" use="required" />
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="order" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="userid" type="xs:string" />
+                            <xs:element name="qty" type="xs:string" />
+                            <xs:element name="cst" type="xs:string" />
+                            <xs:element name="total" type="xs:string" />
+                            <xs:element name="card_number" type="xs:string" />
+                            <xs:element name="cardholder_name" type="xs:string" />
+                            <xs:element name="cvv" type="xs:string" />
+                            <xs:element name="month" type="xs:string" />
+                            <xs:element name="year" type="xs:string" />
+                        </xs:sequence>
+                        <xs:attribute name="id" type="xs:integer" use="required" />
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="package" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="userid" type="xs:string" />
+                            <xs:element name="firstname" type="xs:string" />
+                            <xs:element name="lastname" type="xs:string" />
+                            <xs:element name="category" type="xs:string" />
+                            <xs:element name="level" type="xs:string" />
+                            <xs:element name="addon" type="xs:string" />
+                            <xs:element name="payment" type="xs:string" />
+                        </xs:sequence>
+                        <xs:attribute name="id" type="xs:integer" use="required" />
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

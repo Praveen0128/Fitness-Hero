@@ -1,0 +1,34 @@
+<!ELEMENT FitnessHero (user*, order*, package*)>
+<!ELEMENT user (userid, firstname, lastname, age, gender, mobile, email, password)>
+<!ELEMENT order (orderid, userid, id, qty, cst, total, card_number, cardholder_name, cvv, month, year)>
+<!ELEMENT package (packageid, userid, firstname, lastname, category, level, addon ,payment)>
+<!ATTLIST user id CDATA #REQUIRED>
+<!ATTLIST order id CDATA #REQUIRED>
+<!ATTLIST package id CDATA #REQUIRED>
+<!ELEMENT userid (#PCDATA)>
+ 
+
+<!ELEMENT firstname (#PCDATA)>
+<!ELEMENT lastname (#PCDATA)>
+<!ELEMENT age (#PCDATA)>
+<!ELEMENT gender (#PCDATA)>
+<!ELEMENT mobile (#PCDATA)>
+<!ELEMENT email (#PCDATA)>
+<!ELEMENT password (#PCDATA)>
+
+<!ELEMENT id (#PCDATA)>
+<!ELEMENT qty (#PCDATA)>
+<!ELEMENT cst (#PCDATA)>
+<!ELEMENT total (#PCDATA)>
+<!ELEMENT card_number (#PCDATA)>
+<!ELEMENT cardholder_name (#PCDATA)>
+<!ELEMENT cvv (#PCDATA)>
+<!ELEMENT month (#PCDATA)>
+<!ELEMENT year (#PCDATA)>
+
+<!ELEMENT firstname (#PCDATA)>
+<!ELEMENT lastname (#PCDATA)>
+<!ELEMENT category (#PCDATA)>
+<!ELEMENT level (#PCDATA)>
+<!ELEMENT addon (#PCDATA)>
+<!ELEMENT payment (#PCDATA)>

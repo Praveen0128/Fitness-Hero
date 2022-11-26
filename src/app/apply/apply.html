@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Hustle Fitness</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="stylea.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <link href="../css/auth.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  
+   
+  
+  <nav class="navbar navbar-expand-lg navbar-light "
+  style="background-color: #1F2833;  border-top: 4px solid rgb(209, 229, 53); width: 100%; z-index: 1;">
+  <div class="container-fluid">
+        
+          <h1 style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;color: red;">FitnessHero</h1>
+          <ul>
+            <li><a href="#home">FitnessHero </a></li>
+            <li style="float:right;"><a href="#about">Logout</a></li>
+            <li style="float:right"><a href="#contact">Cart</a></li>
+            <li style="float:right"><a href="#contact">Packages</a></li>
+            <li style="float:right"><a href="#news">Home</a></li>
+          </ul>
+  </div>
+  </nav>   
+
+           
+
+
+  <div class="container" ng-app = "mainApp" ng-controller = "apply">
+    <div class="login-form-box" style="background-color: #c7c5c5; padding: 0 5rem 5rem 5rem; border-radius: 15px;" >
+      <h1 class="form-title" style="font-size: 50px;color: red;">Cart</h1>
+      <h2 class="form-subtitle" style="font-size: 20px;">
+        Your Cart
+      </h2>
+      <form class="form" name="cpform" onsubmit="return validateForm()">
+        <div class="form-panel">
+                    
+            <div class="container p-5">
+            <div class="col">
+              <div class="row">
+
+                <div ng-app = "" ng-init = "products = [
+                {price:'2499',name:'15-KG Dumbell'}, 
+                {price:'9999',name:'Bench'}, 
+                {price:'35999',name:'Bicycle'}, 
+                {price:'76400',name:'TredMill'}, 
+                {price:'25000',name:'Latt Machine'}
+                ]"> 
+                <p>List of products with price:</p>
+            
+                <ol>
+                  <p ng-repeat = "product in products">
+                      {{ 'Product: ' + product.name + ',Price: ' + product.price }}
+                  </p>
+                </ol>
+              </div>
+              </div>
+              <div class="row">
+                <img src="images/pic12.jpg" style="width:250px">
+                <img src="images/pic13.jpg" style="width:250px">
+                <img src="images/pic15.jpg" style="width:250px">
+                <img src="images/pic16.jpg" style="width:250px">
+              </div>
+              </div>
+            </div>
+            </div>
+  
+        <br><br>
+     
+      <table class="table">
+        <tr>
+            <th>Id.no</th>            
+            <th>Qty</th>
+            <th>Cost</th>
+            <th>Total</th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="item in cart.items"> 
+            <td><input type="number" name="id" ng-model="item.id" max="5" required></td> 
+            <span style = "color:red" ng-show = "cpform.id.$dirty && cpform.id.$invalid">
+              <span ng-show = "cpform.id.$error.max">invalid id.</span>
+            </span>
+
+            <td><input type="number" name ="qty" ng-model="item.qty" max="10" min="1" required></td>
+            <span style = "color:red" ng-show = "cpform.qty.$dirty && cpform.qty.$invalid">
+              <span ng-show = "cpform.qty.$error.max">Maximum quantity is 10</span>
+              <span ng-show = "cpform.qty.$error.min">Maximum quantity is 1</span>
+            </span>
+            
+            <td><input type="number" name ="cst" ng-model="item.cost" min="1" required></td>
+            <span style = "color:red" ng-show = "cpform.cst.$dirty && cpform.cst.$invalid">
+              <span ng-show = "cpform.cst.$error.min">cost cannot be negative</span>
+            </span>
+
+            <td>{{item.qty * item.cost | currency:'Rs '}}</td>
+            <td>[<a href ng-click="removeItem($index)">X</a>]</td>
+        </tr>
+        <tr>
+            <td><a href ng:click="addItem()" style="color: rgb(251, 41, 121)">Add item</a></td>
+            <td></td>
+            <td>Total:</td>
+            <td>{{total() | currency:'Rs '}}</td>
+        </tr>
+      </table>
+
+            <div class="form-row">
+                <label>Card Holder Name</label>
+                <div class="control">
+                    <input type="text" name="pName" ng-model="pName" class="input" required>
+                </div>
+                <span style = "color:red" ng-show = "cpform.pName.$dirty && cpform.pName.$invalid">
+                    <span ng-show = "cpform.pName.$error.required">Name is required.</span>
+                </span>
+            </div>
+            <br>
+
+            <div class = "form-row">
+                <label>Age</label>
+                
+                    <input type="number" name="old" placeholder="18" class="input" placeholder="Praveen" ng-model="old" min="18" max="60" required>
+                </div>
+                <span style="color: red;" ng-show = "cpform.old.$dirty && cpform.old.$invalid">
+                    <span ng-show = "cpform.old.$error.required">age is required.</span>
+                    <span ng-show = "cpform.old.$error.min">Minimum age limit is 18 years old.</span>
+                    <span ng-show = "cpform.old.$error.max">Maximum age limit is 60 years old.</span>
+                </span>
+            
+            <br>
+
+            <div class="form-row">
+                <label>Card Number</label>
+                <div class="control">
+                    <input type="number" name="pNum" ng-model="pNum" ng-pattern="/^[0-9]{16}$/" placeholder="12346789012345" class="input" required>
+                </div>
+                <span style = "color:red" ng-show = "cpform.pNum.$dirty && cpform.pNum.$invalid">
+                    <span ng-show = "cpform.pNum.$error.required">Card Number is required.</span>
+                    <span  ng-show="cpform.pNum.$error.pattern">Not valid number!</span>
+                </span>
+            </div>
+            <br>
+
+            <div class="form-row">
+                <label>CVV</label>
+                <div class="control">
+                    <input type="password" name="pcvv" ng-model="pcvv" ng-pattern="/^[0-9]{3}$/" placeholder="***" class="input" required>
+                </div>
+                <span style = "color:red" ng-show = "cpform.pcvv.$dirty && cpform.pcvv.$invalid">
+                    <span ng-show = "cpform.pcvv.$error.required">CVV is required.</span>
+                    <span  ng-show="cpform.pcvv.$error.pattern">Not valid number!</span>
+                </span>
+            </div>
+            <br>
+
+            
+
+          <div class="form-row">
+                <label>Expiry Date</label>
+                
+                <select name='expireMM' id='expireMM'>
+                  <option value=''>Month</option>
+                  <option value='01'>January</option>
+                  <option value='02'>February</option>
+                  <option value='03'>March</option>
+                  <option value='04'>April</option>
+                  <option value='05'>May</option>
+                  <option value='06'>June</option>
+                  <option value='07'>July</option>
+                  <option value='08'>August</option>
+                  <option value='09'>September</option>
+                  <option value='10'>October</option>
+                  <option value='11'>November</option>
+                  <option value='12'>December</option>
+              </select> 
+              <select name='expireYY' id='expireYY'>
+                  <option value=''>Year</option>
+                  <option value='20'>2022</option>
+                  <option value='21'>2023</option>
+                  <option value='22'>2024</option>
+                  <option value='23'>2025</option>
+                  <option value='24'>2026</option>
+                  <option value='25'>2027</option>
+                  <option value='26'>2028</option>
+                  <option value='27'>2029</option>
+              </select> 
+          <input class="inputCard" type="hidden" name="expiry" id="expiry" maxlength="4"/>
+          <div class="cards">
+            <img src="images/p1.png" alt="">
+            <img src="images/p2.png" alt="">
+            <img src="images/p3.png" alt="">
+        </div>
+        </div>
+        
+
+
+
+
+        <br>
+          
+
+  
+          <button class="button" type="submit">Submit</button>
+          </div>
+      </form>
+    </div>
+  </div>
+
+
+  <script>
+
+var mainApp = angular.module("mainApp", []);
+    
+    mainApp.controller('apply', function($scope) {
+       $scope.reset = function() {
+          console.log($scope);
+          $scope.pcategory = "";
+          $scope.ptype = "";
+          $scope.pName = "";
+          $scope.pnum = "";
+          $scope.pcvv = "";
+          $scope.old = 21;
+       }
+       
+    $scope.reset();
+    $scope.plans = {
+               
+        categories:[
+          {name:'Team workout'},
+          {name:'Home workout'},
+          {name:'Personal Training'},
+          {name:'Yoga Classes'},
+          {name:'Cardio Classes'},
+          {name:'Weight loss'}
+        ],
+
+        types:[
+          {name:'Quarterly Package'},
+          {name:'Half Yearly Package'},
+          {name:'Yearly Package'}
+        ],
+       }
+
+    $scope.cart = {
+        items: [{ qty: '', description: '', cost: ''}]
+    }
+
+    $scope.addItem = function() {
+        $scope.cart.items.push({ qty: '', description: '', cost: ''});
+    }
+
+    $scope.removeItem = function(index) {
+        $scope.cart.items.splice(index, 1);
+    }
+
+    $scope.total = function() {
+        var total = 0;
+        angular.forEach($scope.cart.items, function(item) {
+            total += item.qty * item.cost;
+        })
+        return total;
+    }
+    });
+ </script>
+
+  <script type="text/javascript">
+    function validateForm() {
+      let pcategory = document.forms["cpform"]["pcategory"].value;
+      let ptype = document.forms["cpform"]["ptype"].value;
+      let age = document.forms["cpform"]["old"].value;
+      
+      if (pcategory == "") {
+        alert("Category must be filled out");
+        return false;
+      }
+      if (ptype == "") {
+        alert("Type must be filled out");
+        return false;
+      }
+      if (old > 60 || old < 18) {
+        alert("Invalid age");
+        return false;
+      }
+      return true;
+    }
+
+
+  </script>
+</body>
+
+</html>

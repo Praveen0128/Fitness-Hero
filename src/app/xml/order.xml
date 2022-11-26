@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="order.xsd"?>
+<FitnessHero>
+
+    <!-- User Table -->
+    <user id="1668607516673">
+        <firstname>Praveen</firstname>
+        <lastname>kumar</lastname>
+        <age>21</age>
+        <gender>Male</gender>
+        <mobile>9940765609</mobile>
+        <email>pkpraveenkumar0128@gmail.com</email>
+        <password>12345678</password>
+    </user>
+    <user id="1668608086991">
+        <firstname>user1</firstname>
+        <lastname>member</lastname>
+        <age>25</age>
+        <gender>Female</gender>
+        <mobile>1545561579</mobile>
+        <email>user1@gmail.com</email>
+        <password>12345678</password>
+    </user>
+
+    <!-- Order Table -->
+    <order id="101">
+        <userid>1668607516673</userid>
+        <id>3</id>
+        <qty>3</qty>
+        <cst>25000.0</cst>
+        <total>75000.00</total>
+        <card_number>1234 5678 9123 4567</card_number>
+        <cardholder_name>Praveen kumar</cardholder_name>
+        <CVV>123</CVV>
+        <month>August</month>
+        <year>2023</year>
+        </order>
+    <order id="102">
+        <userid>1668608086991</userid>
+        <id>2</id>
+        <qty>2</qty>
+        <cst>5000.0</cst>
+        <total>10000.00</total>
+        <card_number>9876 2453 6543 2876</card_number>
+        <cardholder_name>user2 member</cardholder_name>
+        <CVV>123</CVV>
+        <month>September</month>
+        <year>2025</year>
+    </order>
+    
+    <!-- Package Table -->
+    <package id="P001">
+        <userid>1668607516673</userid>
+        <firstname>Praveen</firstname>
+        <lastname>kumar</lastname>
+        <category>Kick boxing</category>
+        <level>intermediate</level>
+        <addon>personal trainer</addon>
+        <payment>Gpay</payment> 
+    </package>
+    <package id="P002">
+        <userid>1668608086991</userid>
+        <firstname>user1</firstname>
+        <lastname>member</lastname>
+        <category>Cardio</category>
+        <level>beginner</level>
+        <addon>Steam bath</addon>
+        <payment>Upi</payment> 
+    </package>
+</FitnessHero>
+  

@@ -1,0 +1,9 @@
+<!ELEMENT payments (payment+)>
+<!ELEMENT payment (card_number, user_id, cardholder_name, CVV, expiry_date)>
+<!ELEMENT card_number (#PCDATA)>
+<!ELEMENT user_id (#PCDATA)>
+<!ELEMENT cardholder_name (#PCDATA)>
+<!ELEMENT CVV (#PCDATA)>
+<!ELEMENT expiry_date (#PCDATA)>
+
+<!ATTLIST payments id ID NCName #REQUIRED>

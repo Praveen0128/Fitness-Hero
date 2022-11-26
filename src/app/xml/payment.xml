@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE payments SYSTEM "payment_type.dtd">
+<payments>
+  <payment id="1">
+    <card_number>9876 2453 6543 2876</card_number>
+    <user_id>1<user_id>
+    <cardholder_name>Praveen kumar</cardholder_name>
+    <CVV>123</CVV>
+    <expiry_date>2022-08-25T13:08:23.478Z</expiry_date>
+  </payment>
+
+  <payment id="2">
+    <card_number>9645 287 189 0936</card_number>
+    <user_id>2<user_id>
+    <cardholder_name>Pranav Adith</cardholder_name>
+    <CVV>149</CVV>
+    <expiry_date>2022-04-25T13:10:26.478Z</expiry_date>
+  </payment>
+</payments>
